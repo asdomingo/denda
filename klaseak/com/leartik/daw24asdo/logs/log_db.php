@@ -9,7 +9,7 @@ class LogDB {
 
     public static function insertLog($ekintza) {
         try {
-            $db = new PDO(self::getDbPath());
+            $db = new PDO('sqlite:/var/www/html/produktuak.db');
             $stmt = $db->prepare("INSERT INTO logs (ekintza) VALUES (?)");
             return $stmt->execute([$ekintza]);
         } catch (\Exception $e) {
@@ -19,7 +19,7 @@ class LogDB {
 
     public static function selectLogs() {
         try {
-            $db = new PDO(self::getDbPath());
+            $db = new PDO('sqlite:/var/www/html/produktuak.db');
             $stmt = $db->query("SELECT * FROM logs ORDER BY data DESC");
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (\Exception $e) {

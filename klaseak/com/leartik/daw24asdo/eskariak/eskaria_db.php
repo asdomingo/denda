@@ -9,7 +9,7 @@ class EskariaDB {
 
     public static function selectEskariak() {
         try {
-            $db = new PDO(self::getDbPath());
+            $db = new PDO('sqlite:/var/www/html/produktuak.db');
             $erregistroak = $db->query("SELECT * FROM eskariak");
             $eskariak = array();
             while ($erregistroa = $erregistroak->fetch(PDO::FETCH_ASSOC)) {
@@ -29,7 +29,7 @@ class EskariaDB {
 
     public static function selectEskaria($id) {
         try {
-            $db = new PDO(self::getDbPath());
+            $db = new PDO('sqlite:/var/www/html/produktuak.db');
             $stmt = $db->prepare("SELECT * FROM eskariak WHERE id = ?");
             $stmt->execute([$id]);
             if ($erregistroa = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -49,7 +49,7 @@ class EskariaDB {
 
     public static function insertEskaria($eskaria) {
         try {
-            $db = new PDO(self::getDbPath());
+            $db = new PDO('sqlite:/var/www/html/produktuak.db');
             $stmt = $db->prepare("INSERT INTO eskariak (bezeroa, helbidea, produktua_id, kantitatea) VALUES (?, ?, ?, ?)");
             return $stmt->execute([$eskaria->getBezeroa(), $eskaria->getHelbidea(), $eskaria->getProduktuaId(), $eskaria->getKantitatea()]);
         } catch (\Exception $e) {
@@ -59,7 +59,7 @@ class EskariaDB {
 
     public static function updateEskaria($eskaria) {
         try {
-            $db = new PDO(self::getDbPath());
+            $db = new PDO('sqlite:/var/www/html/produktuak.db');
             $stmt = $db->prepare("UPDATE eskariak SET bezeroa = ?, helbidea = ?, produktua_id = ?, kantitatea = ? WHERE id = ?");
             return $stmt->execute([$eskaria->getBezeroa(), $eskaria->getHelbidea(), $eskaria->getProduktuaId(), $eskaria->getKantitatea(), $eskaria->getId()]);
         } catch (\Exception $e) {
@@ -69,7 +69,7 @@ class EskariaDB {
 
     public static function deleteEskaria($id) {
         try {
-            $db = new PDO(self::getDbPath());
+            $db = new PDO('sqlite:/var/www/html/produktuak.db');
             $stmt = $db->prepare("DELETE FROM eskariak WHERE id = ?");
             return $stmt->execute([$id]);
         } catch (\Exception $e) {

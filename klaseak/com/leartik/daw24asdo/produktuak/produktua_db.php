@@ -13,7 +13,7 @@ class ProduktuaDB
     public static function selectProduktuak()
     {
         try {
-            $db = new PDO(self::getDbPath());
+            $db = new PDO('sqlite:/var/www/html/produktuak.db');
             $erregistroak = $db->query("SELECT * FROM produktuak");
             $produktuak = array();
 
@@ -44,7 +44,7 @@ class ProduktuaDB
     public static function selectProduktuakEskaintzak()
     {
         try {
-            $db = new PDO(self::getDbPath());
+            $db = new PDO('sqlite:/var/www/html/produktuak.db');
             // Usamos la columna real: eskaintza
             $erregistroak = $db->query("SELECT * FROM produktuak WHERE eskaintzak = 1");
             $produktuak = array();
@@ -69,7 +69,7 @@ class ProduktuaDB
     public static function selectProduktuakNobedadeak()
     {
         try {
-            $db = new PDO(self::getDbPath());
+            $db = new PDO('sqlite:/var/www/html/produktuak.db');
             
             $erregistroak = $db->query("SELECT * FROM produktuak WHERE nobedadeak = 1");
             $produktuak = array();
@@ -94,7 +94,7 @@ class ProduktuaDB
     public static function selectProduktua($id)
     {
         try {
-            $db = new PDO(self::getDbPath());
+            $db = new PDO('sqlite:/var/www/html/produktuak.db');
             $stmt = $db->prepare("SELECT * FROM produktuak WHERE id = ?");
             $stmt->execute([$id]);
 
