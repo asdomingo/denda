@@ -19,7 +19,7 @@ $novedades = PDB::selectProduktuakNobedadeak() ?? [];
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <div class="header"><img src="img/logo.png" alt="Denda Logo" class="logo"></div>
+    <div class="header"><img src="https://asdo-s3.s3.eu-north-1.amazonaws.com/logo.png" alt="Denda Logo" class="logo"></div>
     <div class="container">
         <div class="nav">
             <a href="index.php">Hasiera</a>
