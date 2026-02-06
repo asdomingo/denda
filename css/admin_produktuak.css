@@ -1,0 +1,161 @@
+/* --- Base y Tipografía --- */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Fondo muy claro */
+    color: #343a40; /* Texto oscuro */
+    padding: 30px;
+}
+
+h1 {
+    color: #35b924; /* Azul para el título principal */
+    border-bottom: 3px solid #35b924;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 2.2em;
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+/* --- Títulos de Categoría y Acciones de Categoría --- */
+h2 {
+    color: #343a40; /* Título de categoría */
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-left: 5px solid #4a9437; /* Amarillo de advertencia/atención */
+    padding: 10px 10px 10px 15px;
+    background-color: #8dc03b; /* Fondo suave para la categoría */
+    border-radius: 4px;
+}
+
+/* Texto de "No hay productos" */
+em {
+    color: #6c757d;
+    display: block;
+    margin-bottom: 20px;
+    padding-left: 15px;
+}
+
+/* --- Lista de Productos con Imágenes --- */
+ul.lista-admin-produktuak {
+    list-style-type: none; /* Elimina las viñetas */
+    padding-left: 0;
+    margin-bottom: 30px;
+}
+
+li.produktua-admin-item {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    display: flex; 
+    justify-content: space-between; /* Espacio entre info y botones */
+    align-items: center;
+}
+
+/* Contenedor de la Imagen y el Nombre */
+.produktua-info-admin {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: #343a40;
+}
+
+/* Estilo de la imagen miniatura */
+.produktua-thumb {
+    width: 40px; 
+    height: 40px;
+    object-fit: cover; /* Asegura que la imagen no se distorsione */
+    margin-right: 15px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    flex-shrink: 0;
+}
+
+/* --- Estilos de Enlaces y Acciones --- */
+a {
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+/* Enlaces generales */
+a:link, a:visited {
+    color: #ffffff;
+}
+
+a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Contenedor de Acciones (Botones junto al producto) */
+.produktua-actions-admin a {
+    margin-left: 15px;
+    white-space: nowrap; 
+}
+
+/* Enlace de Aldatu (Editar) - Azul Cian */
+a[href*="aldatu"] {
+    color: #48ff00;
+    font-weight: bold;
+}
+
+a[href*="aldatu"]:hover {
+    color: #d1d347;
+}
+
+/* Enlace de Ezabatu (Eliminar) - Rojo Peligro */
+a[href*="ezabatu"] {
+    color: #dc3545; 
+    font-weight: bold;
+}
+
+a[href*="ezabatu"]:hover {
+    color: #bd2130;
+}
+
+/* --- Botones de Formulario (Acciones Principales) --- */
+input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+/* Botón "Producto berria" y "Kategoria berria" */
+input[name="berria"] {
+    background-color: #28a745; /* Verde para agregar/nuevo */
+    color: white;
+    margin-right: 15px;
+    box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+}
+
+input[name="berria"]:hover {
+    background-color: #218838;
+}
+
+/* Contenedores de formulario para alineación de botones */
+form {
+    display: inline-block; /* Permite que los formularios estén uno al lado del otro */
+    margin-right: 10px;
+}
+
+/* Estilo para el enlace "Sesiotik irten" al final */
+p a[href="irten.php"] {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 15px;
+    background-color: #6c757d; /* Gris para salir */
+    color: white;
+    border-radius: 5px;
+}
+
+p a[href="irten.php"]:hover {
+    background-color: #5a6268;
+    text-decoration: none;
+}
