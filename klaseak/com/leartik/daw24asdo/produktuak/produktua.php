@@ -9,10 +9,10 @@ class Produktua
     private $prezioa;    
     private $irudia; 
     private $kategoria_id;
-    private $eskaintzak;
-    private $nobedadeak;
-    private $deskontua;
-    
+    // Inicializamos a 0 para evitar valores null en la BD
+    private $eskaintzak = 0;
+    private $nobedadeak = 0;
+    private $deskontua = 0;
 
     public function getId() {
         return $this->id;
@@ -39,13 +39,25 @@ class Produktua
     }
 
     public function getNobedadeak() {
-        return $this->nobedadeak;
+        // Forzamos a entero para que el catálogo (if == 1) funcione siempre
+        return (int)$this->nobedadeak;
     }
 
     public function getDeskontua() {
         return $this->deskontua;
     }
-    
+
+    /**
+     * Calcula el precio final con descuento
+     * deskontua es un porcentaje (0-100)
+     * Retorna el precio final: prezioa * (1 - deskontua/100)
+     */
+    public function getPrezioaDeskontuarekin() {
+        if ($this->deskontua > 0) {
+            return $this->prezioa * (1 - $this->deskontua / 100);
+        }
+        return $this->prezioa;
+    }
 
     public function setId($id) {
         $this->id = $id;
@@ -72,12 +84,11 @@ class Produktua
     }
 
     public function setNobedadeak($nobedadeak) {
-        $this->nobedadeak = $nobedadeak;
+        // Aseguramos que guardamos 1 o 0
+        $this->nobedadeak = $nobedadeak ? 1 : 0;
     }
 
     public function setDeskontua($deskontua) {
         $this->deskontua = $deskontua;
     }
 }
-
-?>

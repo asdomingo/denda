@@ -18,7 +18,8 @@ body {
     background-color: #ffffff;
     padding: 20px 0;
     text-align: center;
-    border-bottom: 2px solid #4CAF50; /* Color verde como en tu imagen */
+    border-bottom: 2px solid #4CAF50;
+    /* Color verde como en tu imagen */
     margin-bottom: 20px;
 }
 
@@ -26,6 +27,12 @@ body {
     margin: 0;
     color: #2c3e50;
     font-size: 2.2rem;
+}
+
+.header .logo {
+    width: 500px;
+    margin-bottom: -200px;
+    margin-top: -150px;
 }
 
 .nav {
@@ -36,7 +43,7 @@ body {
 
 .nav a {
     text-decoration: none;
-    color: #007bff;
+    color: #26a122;
     font-weight: 600;
 }
 
@@ -79,7 +86,7 @@ h2 {
 
 .produktua-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .prezio-container {
@@ -96,7 +103,8 @@ h2 {
 }
 
 .prezio-nuevo {
-    color: #e74c3c; /* Rojo para destacar la oferta */
+    color: #e74c3c;
+    /* Rojo para destacar la oferta */
     font-weight: bold;
     font-size: 1.3em;
 }
@@ -112,5 +120,23 @@ h2 {
 }
 
 .produktua-card {
-    position: relative; /* Necesario para el badge */
+    position: relative;
+    /* Necesario para el badge */
+}
+
+.btn-saskira {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.btn-saskira:hover {
+    background-color: #45a049;
 }

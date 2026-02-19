@@ -4,18 +4,162 @@
         <meta charset="UTF-8">
         <title>Produktuen administrazio gunea</title>
         <link rel="stylesheet" href="../css/admin_produktuak.css">
+        <style>
+            .admin-section {
+                background: white;
+                padding: 20px;
+                border-radius: 8px;
+                margin-top: 20px;
+            }
+
+            .admin-section h2 {
+                margin-bottom: 15px;
+                color: #333;
+            }
+
+            .admin-table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .admin-table th {
+                background: #34495e;
+                color: white;
+                padding: 12px;
+                text-align: left;
+                font-weight: bold;
+                font-size: 0.9rem;
+                text-transform: uppercase;
+            }
+
+            .admin-table td {
+                padding: 12px;
+                border-bottom: 1px solid #eee;
+            }
+
+            .admin-table tr:hover {
+                background: #f8f9fa;
+            }
+
+            .estatua-badge {
+                display: inline-block;
+                padding: 5px 10px;
+                border-radius: 15px;
+                font-weight: bold;
+                font-size: 0.8rem;
+            }
+
+            .estatua-zain {
+                background: #fff3cd;
+                color: #856404;
+                border: 1px solid #ffeeba;
+            }
+
+            .estatua-prozesatzen {
+                background: #d1ecf1;
+                color: #0c5460;
+                border: 1px solid #bee5eb;
+            }
+
+            .estatua-bidalita {
+                background: #cce5ff;
+                color: #004085;
+                border: 1px solid #b8daff;
+            }
+
+            .estatua-jasota {
+                background: #d4edda;
+                color: #155724;
+                border: 1px solid #c3e6cb;
+            }
+
+            .estatua-ezeztatua {
+                background: #f8d7da;
+                color: #721c24;
+                border: 1px solid #f5c6cb;
+            }
+
+            .estatua-itzulita {
+                background: #e2e3e5;
+                color: #383d41;
+                border: 1px solid #d6d8db;
+            }
+
+            .btn-status {
+                padding: 4px 8px;
+                font-size: 0.75rem;
+                border-radius: 4px;
+                cursor: pointer;
+                border: 1px solid transparent;
+                transition: all 0.2s;
+                font-weight: 600;
+            }
+
+            .btn-prozesatu { background: #17a2b8; color: white; }
+            .btn-bidali { background: #007bff; color: white; }
+            .btn-osatu { background: #28a745; color: white; }
+            .btn-ezeztatu { background: #dc3545; color: white; }
+
+            .btn-status:hover {
+                opacity: 0.8;
+                transform: scale(1.03);
+            }
+
+            .btn-small {
+                padding: 6px 12px;
+                margin: 2px;
+                font-size: 0.85rem;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                text-decoration: none;
+                display: inline-block;
+            }
+
+            .btn-primary-small {
+                background: #5cb85c;
+                color: white;
+            }
+
+            .btn-edit-small {
+                background: #337ab7;
+                color: white;
+            }
+
+            .btn-delete-small {
+                background: #d9534f;
+                color: white;
+            }
+
+            .no-data {
+                text-align: center;
+                padding: 30px;
+                color: #999;
+                font-size: 1.1rem;
+            }
+
+            /* Estilos para formularios en tablas */
+            form select {
+                padding: 5px 8px;
+                border: 1px solid #ddd;
+                border-radius: 3px;
+                font-size: 0.9rem;
+            }
+
+            form button {
+                margin: 0 !important;
+                padding: 5px 12px !important;
+                font-size: 0.85rem !important;
+            }
+        </style>
     </head>
     <body>
-        <h1>Produktuen administrazio gunea</h1>
-        <p>Produktuen zerrenda</p>
+        <header class="header">            
+            <h1>Produktuen administrazio gunea</h1>
+        </header>
 
-        <nav>
-            <ul>
-                <li><a href="eskariak/">Eskariak kudeatu</a></li>
-                <li><a href="mezuak/">Mezuak kudeatu</a></li>
-            </ul>
-        </nav>
-
+        <div id="produktuak">
+        <h3>Produktuen zerrenda</h3>
         <?php
         
         if (isset($produktuak_by_kategoria) && is_array($produktuak_by_kategoria) && count($produktuak_by_kategoria) > 0) {
@@ -23,7 +167,7 @@
             ksort($produktuak_by_kategoria);
 
             foreach ($produktuak_by_kategoria as $kategoria_id => $produktuak_list) {
-                
+
                 $kategoria_izena = isset($nombres_kategorias[$kategoria_id]) ? $nombres_kategorias[$kategoria_id] : "Kategoria $kategoria_id";
                 ?>
 
@@ -91,6 +235,203 @@
         <form action="kategoria_sortu/" method="post">
             <p><input type="submit" name="berria" value="Kategoria berria"></p>
         </form>
-        <p><a href="irten.php">Sesiotik irten</a></p>
+        </div>
+
+        <hr style="margin: 40px 0; border: none; border-top: 2px solid #ddd;">
+
+        <?php if (isset($mensaiea_exito)): ?>
+            <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px; border-left: 4px solid #28a745;">
+                <?php echo htmlspecialchars($mensaiea_exito); ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (isset($mensaiea_error)): ?>
+            <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px; border-left: 4px solid #dc3545;">
+                <?php echo htmlspecialchars($mensaiea_error); ?>
+            </div>
+        <?php endif; ?>
+
+        <div class="admin-section">
+            <h2>Eskariak Kudeatu</h2>
+            <?php if (empty($eskariak)): ?>
+                    <div class="no-data">Ez dago eskaririk erregistratuta sistema berean.</div>
+                <?php else: ?>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Bezeroa</th>
+                                <th>Emaila</th>
+                                <th>Telefonoa</th>
+                                <th>Estatua</th>
+                                <th>Data</th>
+                                <th>Ekintzak</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                            $pedidosAgrupados = [];
+                            foreach ($eskariak as $eskaria) {
+                                $key = $eskaria->getId();
+                                if (!isset($pedidosAgrupados[$key])) {
+                                    $pedidosAgrupados[$key] = $eskaria;
+                                }
+                            }
+
+                            foreach ($pedidosAgrupados as $id => $primerItem): 
+                                $estatua = $primerItem->getEstatua() ?? 'Zain';
+                                $badgeClass = 'estatua-zain';
+                                if ($estatua === 'Bidalita') $badgeClass = 'estatua-bidalita';
+                                elseif ($estatua === 'Jasota') $badgeClass = 'estatua-jasota';
+                                ?>
+                                <tr>
+                                    <td><strong>#<?php echo $primerItem->getId(); ?></strong></td>
+                                    <td><?php echo htmlspecialchars($primerItem->getIzena() . ' ' . $primerItem->getAbizenak()); ?></td>
+                                    <td><?php echo htmlspecialchars($primerItem->getEmail()); ?></td>
+                                    <td><?php echo htmlspecialchars($primerItem->getTelefono()); ?></td>
+                                    <td id="status-cell-<?php echo $primerItem->getId(); ?>">
+                                        <div style="display: flex; gap: 5px; flex-wrap: wrap; align-items: center;">
+                                            <span class="estatua-badge <?php echo 'estatua-' . strtolower(str_replace(' ', '-', $estatua)); ?>">
+                                                <?php echo htmlspecialchars($estatua); ?>
+                                            </span>
+                                            
+                                            <form method="POST" style="display: inline-flex; gap: 4px;" onsubmit="return updateEstatuaAJAX(this, <?php echo $primerItem->getId(); ?>)">
+                                                <input type="hidden" name="id_eskaria" value="<?php echo $primerItem->getId(); ?>">
+                                                <input type="hidden" name="estatua" id="estatua_input_<?php echo $primerItem->getId(); ?>">
+                                                
+                                                <?php if ($estatua === 'Zain'): ?>
+                                                    <button type="submit" name="cambiar_estado_eskaria" value="Prozesatzen" class="btn-status btn-prozesatu" onclick="document.getElementById('estatua_input_<?php echo $primerItem->getId(); ?>').value='Prozesatzen'">Prozesatu</button>
+                                                <?php endif; ?>
+                                                
+                                                <?php if ($estatua === 'Prozesatzen'): ?>
+                                                    <button type="submit" name="cambiar_estado_eskaria" value="Bidalita" class="btn-status btn-bidali" onclick="document.getElementById('estatua_input_<?php echo $primerItem->getId(); ?>').value='Bidalita'">Bidali</button>
+                                                <?php endif; ?>
+                                                
+                                                <?php if ($estatua === 'Bidalita'): ?>
+                                                    <button type="submit" name="cambiar_estado_eskaria" value="Jasota" class="btn-status btn-osatu" onclick="document.getElementById('estatua_input_<?php echo $primerItem->getId(); ?>').value='Jasota'">Osatu</button>
+                                                <?php endif; ?>
+
+                                                <?php if ($estatua !== 'Jasota' && $estatua !== 'Ezeztatua'): ?>
+                                                    <button type="submit" name="cambiar_estado_eskaria" value="Ezeztatua" class="btn-status btn-ezeztatu" onclick="if(confirm('Ziur zaude eskaria ezeztatu nahi duzula?')) { document.getElementById('estatua_input_<?php echo $primerItem->getId(); ?>').value='Ezeztatua'; return true; } return false;">Ezeztatu</button>
+                                                <?php endif; ?>
+                                            </form>
+                                        </div>
+                                    </td>
+                                    <td><?php echo date('d/m/Y H:i', strtotime($primerItem->getData())); ?></td>
+                                    <td>
+                                        <form method="POST" style="display: inline;">
+                                            <input type="hidden" name="id_eskaria" value="<?php echo $primerItem->getId(); ?>">
+                                            <button type="submit" name="eliminar_eskaria" class="btn-small btn-delete-small" onclick="return confirm('Ziur zaude ezabatzea nahi duzu?')">Ezabatu</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <div class="admin-section">
+            <h2>Mezuak Kudeatu</h2>
+            <?php if (empty($mezuak)): ?>
+                    <div class="no-data">Ez dago mezurik jasota.</div>
+                <?php else: ?>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Izena</th>
+                                <th>Emaila</th>
+                                <th>Mezua</th>
+                                <th>Ekintzak</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($mezuak as $mezua): ?>
+                                <tr>
+                                    <td><strong><?php echo $mezua->getId(); ?></strong></td>
+                                    <td><?php echo htmlspecialchars($mezua->getIzena()); ?></td>
+                                    <td><a href="mailto:<?php echo htmlspecialchars($mezua->getEmaila()); ?>"><?php echo htmlspecialchars($mezua->getEmaila()); ?></a></td>
+                                    <td><?php echo nl2br(htmlspecialchars(substr($mezua->getMezua(), 0, 100))); ?>...</td>
+                                    <td>
+                                        <a href="kontaktua/editatu.php?id=<?php echo $mezua->getId(); ?>" class="btn-small btn-edit-small">Aldatu</a>
+                                        <a href="kontaktua/ezabatu.php?id=<?php echo $mezua->getId(); ?>" class="btn-small btn-delete-small" onclick="return confirm('Ziur zaude?')">Ezabatu</a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <p style="margin-top: 20px;"><a href="irten.php">Sesiotik irten</a></p>
+
+        <script>
+            function updateEstatuaAJAX(form, id) {
+                const formData = new FormData(form);
+                const estatua = formData.get('estatua');
+                const cell = document.getElementById('status-cell-' + id);
+                
+                // Efecto visual de carga
+                cell.style.opacity = '0.5';
+                
+                fetch('api/eskaria_status_api.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Simular el cambio en el DOM para que sea instantáneo
+                        updateUIAfterStatusChange(id, data.estatua);
+                    } else {
+                        alert('Errorea: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Errorea eskaera bidaltzean');
+                })
+                .finally(() => {
+                    cell.style.opacity = '1';
+                });
+                
+                return false; // Evitar recarga de página convencional
+            }
+
+            function updateUIAfterStatusChange(id, estatua) {
+                const cell = document.getElementById('status-cell-' + id);
+                let badgeClass = 'estatua-' + estatua.toLowerCase().replace(' ', '-');
+                
+                let html = `
+                    <div style="display: flex; gap: 5px; flex-wrap: wrap; align-items: center;">
+                        <span class="estatua-badge ${badgeClass}">${estatua}</span>
+                        <form method="POST" style="display: inline-flex; gap: 4px;" onsubmit="return updateEstatuaAJAX(this, ${id})">
+                            <input type="hidden" name="id_eskaria" value="${id}">
+                            <input type="hidden" name="estatua" id="estatua_input_${id}">
+                `;
+
+                if (estatua === 'Zain') {
+                    html += `<button type="submit" name="cambiar_estado_eskaria" value="Prozesatzen" class="btn-status btn-prozesatu" onclick="document.getElementById('estatua_input_${id}').value='Prozesatzen'">Prozesatu</button>`;
+                } else if (estatua === 'Prozesatzen') {
+                    html += `<button type="submit" name="cambiar_estado_eskaria" value="Bidalita" class="btn-status btn-bidali" onclick="document.getElementById('estatua_input_${id}').value='Bidalita'">Bidali</button>`;
+                } else if (estatua === 'Bidalita') {
+                    html += `<button type="submit" name="cambiar_estado_eskaria" value="Jasota" class="btn-status btn-osatu" onclick="document.getElementById('estatua_input_${id}').value='Jasota'">Osatu</button>`;
+                }
+
+                if (estatua !== 'Jasota' && estatua !== 'Ezeztatua') {
+                    html += `<button type="submit" name="cambiar_estado_eskaria" value="Ezeztatua" class="btn-status btn-ezeztatu" onclick="if(confirm('Ziur zaude eskaria ezeztatu nahi duzula?')) { document.getElementById('estatua_input_${id}').value='Ezeztatua'; return true; } return false;">Ezeztatu</button>`;
+                }
+
+                html += `
+                        </form>
+                    </div>
+                `;
+                
+                cell.innerHTML = html;
+            }
+        </script>
     </body>
 </html>

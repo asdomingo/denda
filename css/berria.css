@@ -1,128 +1,109 @@
-/* --- Base y Tipografía (Reutilizando estilos de administración) --- */
+/* --- Base y Tipografía --- */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    color: #343a40;
-    padding: 30px;
-    max-width: 600px; /* Limita el ancho del formulario */
-    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- Header --- */
+.header-admin {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo-admin {
+    max-width: 150px;
+    margin-bottom: 10px;
 }
 
 h1 {
-    color: #007bff;
-    border-bottom: 3px solid #007bff;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    font-size: 2.2em;
+    color: #28a745;
+    font-size: 1.8em;
+    margin: 0;
 }
 
-h2 {
-    color: #28a745; /* Verde para la acción de "Crear Nuevo" */
-    font-size: 1.6em;
-    margin-top: 30px;
-    margin-bottom: 20px;
+/* --- Contenedor Principal (La Tarjeta) --- */
+.card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+.form-title {
+    color: #28a745;
     border-left: 5px solid #28a745;
-    padding-left: 10px;
+    padding-left: 15px;
+    margin-bottom: 25px;
+    font-size: 1.4em;
 }
 
-/* --- Navegación / Breadcrumb --- */
-p:first-of-type a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-p:first-of-type a:hover {
-    text-decoration: underline;
-}
-
-/* --- Mensajes de Estado --- */
-.mensaje-error, .mensaje-exito {
-    padding: 15px;
-    border-radius: 5px;
+/* --- Elementos del Formulario --- */
+.form-group {
     margin-bottom: 20px;
-    font-weight: bold;
-}
-
-.mensaje-error {
-    color: #dc3545;
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
-}
-
-.mensaje-exito {
-    color: #155724; 
-    background-color: #d4edda;
-    border: 1px solid #c3e6cb;
-}
-
-
-/* --- Estilos del Formulario de Creación --- */
-form {
-    background-color: #ffffff;
-    padding: 25px;
-    border: 1px solid #e9ecef;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-form p {
-    margin-bottom: 18px;
 }
 
 label {
     display: block;
     font-weight: bold;
-    color: #495057;
-    margin-bottom: 5px;
-    font-size: 1.05em;
+    margin-bottom: 8px;
+    color: #444;
 }
 
 input[type="text"],
-select {
+input[type="number"],
+select,
+textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
     font-size: 1em;
     box-sizing: border-box;
-    transition: border-color 0.2s;
 }
 
-input[type="text"]:focus,
-select:focus {
-    border-color: #28a745; /* Borde verde para la creación */
-    outline: none;
-    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+textarea {
+    resize: vertical;
 }
 
-/* Input de botón Guardar/Crear */
-input[type="submit"] {
-    background-color: #28a745; /* Verde para la acción principal */
+/* --- Botones --- */
+.btn-gorde, input[type="submit"] {
+    background-color: #28a745;
     color: white;
-    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    padding: 12px 25px;
+    border-radius: 6px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.2s;
-    margin-top: 10px;
+    font-size: 1em;
+    transition: background 0.3s ease;
 }
 
-input[type="submit"]:hover {
+.btn-gorde:hover, input[type="submit"]:hover {
     background-color: #218838;
 }
 
-/* Enlace "Itzuli" */
-p a[href="../index.php"] {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #6c757d; /* Gris */
+.btn-hasiera {
+    background-color: #6c757d;
     color: white;
-    border-radius: 5px;
+    padding: 8px 15px;
     text-decoration: none;
-    margin-top: 20px;
+    border-radius: 4px;
+    font-size: 0.9em;
 }
 
-p a[href="../index.php"]:hover {
-    background-color: #5a6268;
+/* --- Breadcrumb --- */
+.breadcrumb {
+    align-self: flex-start;
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+    width: 100%;
 }

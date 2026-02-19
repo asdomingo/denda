@@ -4,7 +4,7 @@ require_once __DIR__ . '/../../klaseak/com/leartik/daw24asdo/produktuak/kategori
 use com\leartik\daw24asdo\produktuak\KategoriaDB;
 
 if (!isset($_GET['id'])) {
-    echo '<p>IDa beharrezkoa da.</p><p><a href="index.php">Itzuli</a></p>';
+    echo '<p>IDa beharrezkoa da.</p><p><a href="../index.php">Itzuli</a></p>';
     exit;
 }
 
@@ -12,7 +12,7 @@ $id = (int)$_GET['id'];
 
 $all = KategoriaDB::selectKategorienak();
 if (!isset($all[$id])) {
-    echo '<p>Kategoria ez da aurkitu.</p><p><a href="index.php">Itzuli</a></p>';
+    echo '<p>Kategoria ez da aurkitu.</p><p><a href="../index.php">Itzuli</a></p>';
     exit;
 }
 
@@ -39,7 +39,10 @@ $current = $all[$id];
     <link rel="stylesheet" href="../../css/aldatu.css"> 
 </head>
 <body>
-    <h1>Kategoria aldatu</h1>
+    <header class="header-admin">
+        <img src="../../img/logo.png" alt="Logo" class="logo-admin">
+        <h1>Kategoria aldatu</h1>
+    </header>
 
     <?php if (isset($mezua)) { echo '<p style="color:red;">' . htmlspecialchars($mezua, ENT_QUOTES, 'UTF-8') . '</p>'; } ?>
 
@@ -54,7 +57,7 @@ $current = $all[$id];
         </p>
         <p>
             <input type="submit" value="Gorde">
-            <a href="../../index.php">Itzuli</a>
+            <a href="../index.php">Itzuli</a>
         </p>
     </form>
 </body>

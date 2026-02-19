@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="../../css/ezabatu.css"> 
 </head>
 <body>
-    <h1>Kategoria ezabatu</h1>
+    <header class="header-admin">
+        <img src="../../img/logo.png" alt="Logo" class="logo-admin">
+        <h1>Kategoria ezabatu</h1>
+    </header>
 
     <?php if (isset($mezua)) { echo '<p style="color:red;">' . htmlspecialchars($mezua, ENT_QUOTES, 'UTF-8') . '</p>'; } ?>
 
@@ -24,7 +27,7 @@
     <form method="post" action="?id=<?php echo htmlspecialchars($id, ENT_QUOTES, 'UTF-8'); ?>">
         <input type="hidden" name="id" value="<?php echo htmlspecialchars($id, ENT_QUOTES, 'UTF-8'); ?>">
         <input type="submit" name="ezabatu" value="Bai, ezabatu">
-        <a href="../../index.php">Ez, itzuli</a>
+        <a href="../index.php">Ez, itzuli</a>
     </form>
 </body>
 </html>

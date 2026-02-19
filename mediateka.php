@@ -23,10 +23,16 @@ if ($produktuak === null) {
     <link rel="stylesheet" href="css/estiloak.css?v=<?php echo time(); ?>">
 </head>
 <body>
-
+    
     
     <div class="header">
         <h1>Mediateka</h1>
+    </div>
+    <div class="logo media"><img src="https://asdo-s3.s3.eu-north-1.amazonaws.com/logo.png" alt="Denda Logo" class="logo"></div>
+    <div class="nav media">
+        <a href="index.php">Hasiera</a>
+        <a href="katalogoa.php">Katalogoa</a>
+    
     </div>
 
     <div class="container">        
@@ -34,7 +40,7 @@ if ($produktuak === null) {
         </div>
 
         
-        <div class="section">
+        <div class="section media-section">
             <h2>Irudiak (Produktuen Carousel-a)</h2>
             <div class="carousel-container">
                 <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
@@ -47,7 +53,13 @@ if ($produktuak === null) {
                                      alt="<?php echo htmlspecialchars($produktua->getIzena(), ENT_QUOTES, 'UTF-8'); ?>">
                                 <div class="carousel-caption">
                                     <h3><?php echo htmlspecialchars($produktua->getIzena(), ENT_QUOTES, 'UTF-8'); ?></h3>
-                                    <p><?php echo htmlspecialchars($produktua->getPrezioa(), ENT_QUOTES, 'UTF-8'); ?> €</p>
+                                    <p>
+                                        <?php if ($produktua->getDeskontua() > 0): ?>
+                                            <span style="text-decoration: line-through;"><?php echo number_format($produktua->getPrezioa(), 2, ',', '.'); ?>€</span> <strong style="color: #e74c3c;"><?php echo number_format($produktua->getPrezioaDeskontuarekin(), 2, ',', '.'); ?>€</strong>
+                                        <?php else: ?>
+                                            <?php echo number_format($produktua->getPrezioa(), 2, ',', '.'); ?> €
+                                        <?php endif; ?>
+                                    </p>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -61,7 +73,7 @@ if ($produktuak === null) {
             <h2>Audio Zone</h2>
             
             <?php
-            // Scan for MP3 files
+            
             $mp3_files = glob("mp3/*.mp3");
             ?>
             
@@ -106,7 +118,7 @@ if ($produktuak === null) {
             <h2>Video Zone</h2>
 
             <?php
-            // Scan for MP4 files
+            
             $mp4_files = glob("mp4/*.mp4");
             ?>
 
@@ -148,7 +160,7 @@ if ($produktuak === null) {
    </div>
 
     <script>
-        // --- Media Switching Logic ---
+        
         function changeAudio(sourceUrl) {
             const audio = document.getElementById('myAudio');
             audio.src = sourceUrl;
@@ -163,7 +175,7 @@ if ($produktuak === null) {
             video.play();
         }
 
-        // --- Carousel Logic ---
+        
         let currentIndex = 0;
         const track = document.getElementById('track');
         const slides = document.querySelectorAll('.carousel-slide');
@@ -190,33 +202,33 @@ if ($produktuak === null) {
             track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
         }
 
-        // Auto-play functionality
+        
         function startAutoPlay() {
             if (totalSlides === 0) return;
-            stopAutoPlay(); // Ensure no duplicate intervals
+            stopAutoPlay(); 
             autoPlayInterval = setInterval(() => {
                 moveCarousel(1);
-            }, 3000); // Change slide every 3 seconds
+            }, 3000); 
         }
 
         function stopAutoPlay() {
             clearInterval(autoPlayInterval);
         }
 
-        // Start auto-play on load
+        
         if (totalSlides > 0) {
             startAutoPlay();
-            updateCarousel(); // Initialize position
+            updateCarousel(); 
         }
 
-        // Pause on hover
+        
         const carouselContainer = document.querySelector('.carousel-container');
         if (carouselContainer) {
             carouselContainer.addEventListener('mouseenter', stopAutoPlay);
             carouselContainer.addEventListener('mouseleave', startAutoPlay);
         }
         
-        // Window resize adjustment
+        
         window.addEventListener('resize', () => {
              updateCarousel();
         });

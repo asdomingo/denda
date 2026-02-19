@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 require('klaseak/com/leartik/daw24asdo/produktuak/produktua_db.php');
 require('klaseak/com/leartik/daw24asdo/produktuak/produktua.php');

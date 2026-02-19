@@ -6,7 +6,7 @@ use PDO;
 class KategoriaDB
 {
     private static function getDbPath() {
-        return "sqlite:C:\\xampp\\htdocs\\erronkacss\\produktuak.db";
+        return "sqlite:C:\\xampp\\htdocs\\denda_sqlite\\produktuak.db";
     }
 
     private static function ensureTable(PDO $db)
@@ -22,7 +22,7 @@ class KategoriaDB
     public static function selectKategorienak()
     {
         try {
-            $db = new PDO('sqlite:/var/www/html/produktuak.db');
+            $db = new PDO('sqlite:C:\\xampp\\htdocs\\denda_sqlite\\produktuak.db');
             $stmt = $db->query("SELECT id, izena, azalpena FROM kategoriak ORDER BY id ASC");
             $out = [];
             while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
@@ -46,7 +46,7 @@ class KategoriaDB
     public static function existsKategoriaByName($izena)
     {
         try {
-            $db = new PDO('sqlite:/var/www/html/produktuak.db');
+            $db = new PDO('sqlite:C:\\xampp\\htdocs\\denda_sqlite\\produktuak.db');
             $stmt = $db->prepare("SELECT COUNT(*) as cnt FROM kategoriak WHERE izena = ? COLLATE NOCASE");
             $stmt->execute([$izena]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -59,7 +59,7 @@ class KategoriaDB
     public static function insertKategoria($izena, $azalpena = '')
     {
         try {
-            $db = new PDO('sqlite:/var/www/html/produktuak.db');
+            $db = new PDO('sqlite:C:\\xampp\\htdocs\\denda_sqlite\\produktuak.db');
             self::ensureTable($db);
             $stmt = $db->prepare("INSERT INTO kategoriak (izena, azalpena) VALUES (?, ?)");
             $ok = $stmt->execute([$izena, $azalpena]);
@@ -74,7 +74,7 @@ class KategoriaDB
     public static function updateKategoria($id, $izena, $azalpena = '')
     {
         try {
-            $db = new PDO('sqlite:/var/www/html/produktuak.db');
+            $db = new PDO('sqlite:C:\\xampp\\htdocs\\denda_sqlite\\produktuak.db');
             self::ensureTable($db);
             $stmt = $db->prepare("UPDATE kategoriak SET izena = ?, azalpena = ? WHERE id = ?");
             $ok = $stmt->execute([$izena, $azalpena, $id]);
@@ -88,7 +88,7 @@ class KategoriaDB
     public static function deleteKategoria($id)
     {
         try {
-            $db = new PDO('sqlite:/var/www/html/produktuak.db');
+            $db = new PDO('sqlite:C:\\xampp\\htdocs\\denda_sqlite\\produktuak.db');
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             // Borrado en cascada: eliminar productos asociados primero dentro de una transacción
             $db->beginTransaction();
@@ -119,7 +119,7 @@ class KategoriaDB
     public static function countKategoriaProducts($id)
     {
         try {
-            $db = new PDO('sqlite:/var/www/html/produktuak.db');
+            $db = new PDO('sqlite:C:\\xampp\\htdocs\\denda_sqlite\\produktuak.db');
             $stmt = $db->prepare("SELECT COUNT(*) as cnt FROM produktuak WHERE kategoria_id = ?");
             $stmt->execute([$id]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -132,7 +132,7 @@ class KategoriaDB
     public static function isKategoriaInUse($id)
     {
         try {
-            $db = new PDO('sqlite:/var/www/html/produktuak.db');
+            $db = new PDO('sqlite:C:\\xampp\\htdocs\\denda_sqlite\\produktuak.db');
             $stmt = $db->prepare("SELECT COUNT(*) as cnt FROM produktuak WHERE kategoria_id = ?");
             $stmt->execute([$id]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);

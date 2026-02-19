@@ -7,8 +7,10 @@
 </head>
 <body>
 
-    <h1>Produktuen administrazio gunea</h1>
-    <p><a href="../../index.php">Hasiera</a> &gt; Ezabatu</p>
+    <header class="header-admin">        
+        <h1>Produktuen administrazio gunea</h1>
+    </header>
+    <p><a href="../index.php">Hasiera</a> &gt; Ezabatu</p>
 
     <h2>Produktua ezabatu (ID: <?= htmlspecialchars($id_produktua) ?>)</h2>
 
@@ -65,7 +67,7 @@
         <input type="hidden" name="id_produktua" value="<?= htmlspecialchars($produktua_existente->getId()) ?>">
         <p>
             <input type="submit" name="ezabatu" value="BAI, Ezabatu">
-            <a href="../../index.php" class="itzuli-lotura">EZ, Itzuli</a>
+            <a href="../index.php" class="itzuli-lotura">EZ, Itzuli</a>
         </p>
     </form>
 

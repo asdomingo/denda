@@ -24,7 +24,7 @@
 			</table>
 		<?php endif; ?>
 
-		<p><a href="../../index.php" style="color:#155724; font-weight:bold;">Itzuli kudeaketara</a></p>
+		<p><a href="../index.php" style="color:#155724; font-weight:bold;">Itzuli kudeaketara</a></p>
 	</div>
 </body>
 </html>

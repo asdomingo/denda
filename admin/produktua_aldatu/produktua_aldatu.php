@@ -7,8 +7,10 @@
 </head>
 <body>
 
-    <h1>Produktuen administrazio gunea</h1>
-    <p><a href="../../index.php">Hasiera</a> &gt; Editatu</p>
+    <header class="header-admin">        
+        <h1>Produktuen administrazio gunea</h1>
+    </header>
+    <p><a href="../index.php">Hasiera</a> &gt; Editatu</p>
 
     <h2>Produktua aldatu (ID: <?= htmlspecialchars($id_produktua) ?>)</h2>
 
@@ -59,7 +61,7 @@
             </table>
         </div>
 
-        <p class="eragiketa-itzuli"><a href="../../index.php">Itzuli</a></p>
+        <p class="eragiketa-itzuli"><a href="../index.php">Itzuli</a></p>
 
     <?php else: ?>
         

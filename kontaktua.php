@@ -29,6 +29,7 @@
     </script>
 </head>
 <body>
+    <link rel="stylesheet" href="css/kontaktua.css">
     <h1>Kontaktua</h1>
     <div id="mezua"></div>
     <form id="kontaktuForm" onsubmit="bidaliKontaktua(event)">

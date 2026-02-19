@@ -7,7 +7,7 @@
     </head>
     <body>
         <h1>Administrazio gunea</h1>
-        <p><a href="../../index.php">Hasiera</a> &gt;</p>
+        <p><a href="../index.php">Hasiera</a> &gt;</p>
         <h2>Kategoria berria</h2>
         <p>Kategoria ondo gorde da.</p>
         <table cellspacing="5" cellpadding="5" border="1">

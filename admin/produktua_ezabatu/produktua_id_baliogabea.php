@@ -11,7 +11,7 @@
 <body>
 	<div class="notice">
 		<h2>ID baliogabea</h2>
-		<p>Emandako produktu IDa ez da balio. Mesedez egiaztatu URL-a edo itzuli <a href="../../index.php">kudeaketara</a>.</p>
+		<p>Emandako produktu IDa ez da balio. Mesedez egiaztatu URL-a edo itzuli <a href="../index.php">kudeaketara</a>.</p>
 		<?php if (isset($id) || isset($_GET['id'])): ?>
 			<p>Saioa egin den ID-a: <strong><?php echo htmlspecialchars($id ?? $_GET['id']); ?></strong></p>
 		<?php endif; ?>

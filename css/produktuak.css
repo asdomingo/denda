@@ -1,0 +1,232 @@
+/* --- 1. CONFIGURACIÓN GENERAL Y VARIABLES --- */
+:root {
+    --verde-ko: #5cb85c;      /* Verde corporativo */
+    --verde-dark: #4cae4c;
+    --rojo-oferta: #d9534f;
+    --bg-gris: #f4f7f6;       /* Gris fondo suave */
+    --texto: #2d3436;
+    --texto-suave: #636e72;
+    --blanco: #ffffff;
+    --sombra-suave: 0 2px 15px rgba(0, 0, 0, 0.08);
+    --sombra-fuerte: 0 8px 25px rgba(0, 0, 0, 0.15);
+    --border-radius: 12px;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-gris);
+    margin: 0;
+    color: var(--texto);
+    line-height: 1.6;
+}
+
+/* --- 2. HEADER Y NAVEGACIÓN --- */
+.header {
+    background-color: var(--blanco);
+    padding: 15px 0;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.logo {
+    max-width: 150px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.header h1 {
+    font-size: 1.1rem;
+    color: var(--texto-suave);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 5px 0 0;
+}
+
+.nav-katalogoa {
+    display: flex;
+    justify-content: center;
+    gap: 50px; /* Espacio amplio entre enlaces */
+    padding: 15px 0;
+    background: var(--blanco);
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.nav-katalogoa a {
+    text-decoration: none;
+    color: var(--texto);
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav-katalogoa a:hover {
+    color: var(--verde-ko);
+}
+
+/* --- 3. BUSCADOR CENTRADO (MEJORADO) --- */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    padding: 0 20px;
+}
+
+#search-input {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 50px; /* Forma de píldora */
+    background-color: white;
+    transition: all 0.3s ease;
+    box-shadow: var(--sombra-suave);
+    outline: none;
+}
+
+#search-input:focus {
+    border-color: var(--verde-ko);
+    box-shadow: 0 4px 15px rgba(92, 184, 92, 0.2);
+    transform: translateY(-2px);
+}
+
+/* --- 4. CONTENEDOR PRINCIPAL Y SECCIONES --- */
+.container-katalogoa {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
+.section {
+    background: var(--blanco);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: var(--sombra-suave);
+}
+
+h2 {
+    color: var(--texto);
+    border-left: 6px solid var(--verde-ko);
+    padding-left: 20px;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* --- 5. TARJETAS DE PRODUCTO --- */
+.produktua-item {
+    background: var(--blanco);
+    border: 1px solid #f0f0f0;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    width: 260px;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative; /* Para que las etiquetas floten dentro */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.produktua-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--sombra-fuerte);
+    border-color: transparent;
+}
+
+.produktua-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    margin: 15px 0;
+    transition: transform 0.3s;
+}
+
+.produktua-item:hover img {
+    transform: scale(1.05);
+}
+
+/* --- 6. ETIQUETAS (BADGES) --- */
+.badges-container {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 2;
+}
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    color: white;
+    text-transform: uppercase;
+}
+
+.badge-new { background-color: var(--verde-ko); }
+.badge-offer { background-color: var(--rojo-oferta); }
+
+/* --- 7. INFORMACIÓN Y PRECIO --- */
+.produktua-info {
+    width: 100%;
+}
+
+.produktua-info dt {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 10px 0;
+    min-height: 2.5em; /* Mantiene alineados los precios */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.produktua-info dt a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.produktua-info dd {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--texto);
+    margin: 0 0 15px 0;
+}
+
+/* --- 8. BOTÓN AÑADIR AL CARRITO --- */
+.btn-saskira {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--verde-ko);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.3s;
+    box-sizing: border-box; /* Evita que el padding ensanche el botón */
+}
+
+.btn-saskira:hover {
+    background-color: var(--verde-dark);
+}
+
+/* --- 9. RESPONSIVE --- */
+@media (max-width: 768px) {
+    .nav-katalogoa {
+        gap: 20px;
+    }
+    
+    .section {
+        padding: 15px;
+    }
+
+    .produktua-item {
+        width: 100%;
+        max-width: 280px;
+    }
+}

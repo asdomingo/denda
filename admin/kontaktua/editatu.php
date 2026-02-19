@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if (MezuaDB::updateMezua($mezua)) {
             LogDB::insertLog("Mezua aldatu: " . $mezua->getId());
-            header("Location: ../../index.php");
+            header("Location: index.php");
             exit;
         } else {
             $error = "Errorea mezua gordetzerakoan.";

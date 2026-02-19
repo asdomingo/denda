@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if (EskariaDB::updateEskaria($eskaria)) {
             LogDB::insertLog("Eskaria aldatu: " . $eskaria->getId());
-            header("Location: ../../index.php");
+            header("Location: index.php");
             exit;
         } else {
             $error = "Errorea eskaria gordetzerakoan.";

@@ -10,7 +10,10 @@
     <link rel="stylesheet" href="../../css/berria.css"> 
 </head>
 <body>
-    <h1>Kategoria berria sortu</h1>
+    <header class="header-admin">
+        <img src="../../img/logo.png" alt="Logo" class="logo-admin">
+        <h1>Kategoria berria sortu</h1>
+    </header>
 
     <?php if (isset($mezua)) { echo '<p style="color:red;">' . htmlspecialchars($mezua, ENT_QUOTES, 'UTF-8') . '</p>'; } ?>
 
@@ -25,7 +28,7 @@
         </p>
         <p>
             <input type="submit" name="gorde" value="Sortu">
-            <a href="../../index.php">Itzuli</a>
+            <a href="../index.php">Itzuli</a>
         </p>
     </form>
 </body>

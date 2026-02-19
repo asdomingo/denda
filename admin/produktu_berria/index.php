@@ -33,6 +33,16 @@ if ($admin == true) {
             $produktua->setPrezioa($prezioa);
             $produktua->setKategoriaId($kategoria_id);
 
+            $nobedadea = isset($_POST['nobedadea']) ? 1 : 0;
+            $eskaintza_balioa = (isset($_POST['eskaintza_bai']) && !empty($_POST['eskaintza_kopurua'])) 
+                                ? (int)$_POST['eskaintza_kopurua'] 
+                                : 0;
+
+            $produktua->setNobedadeak($nobedadea);
+            $produktua->setEskaintzak($eskaintza_balioa);
+            
+
+
             if (ProduktuaDB::insertProduktua($produktua) > 0) {
                 include('produktua_gorde_da.php');
             } else {
