@@ -1,0 +1,300 @@
+/* --- Configuración General (Copied from index.css for consistency) --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* --- Header y Navegación --- */
+.header {
+    padding: 20px 0;
+    text-align: center;   
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin-top: -150px;
+    margin-left: -1900px;
+    color: #2c3e50;
+    font-size: 2.2rem;
+}
+
+.logo {
+    margin-top: -90px;
+    height: 400px;
+    /* Small and discreet */
+    width: auto;
+    vertical-align: middle;
+    margin-right: 15px;
+    
+}
+
+.header-admin {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-bottom: 2px solid #4CAF50;
+    margin-bottom: 20px;
+}
+
+
+.nav {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    justify-content: center;
+    /* Centered nav */
+}
+
+.nav a {
+    text-decoration: none;
+    color: #236d30;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-top: -180px;
+    margin-left: -50px;
+    margin-right: 40px;
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
+
+.nav a.active {
+    color: #4CAF50;
+    /* Highlight active link */
+    border-bottom: 2px solid #4CAF50;
+}
+
+/* --- Secciones y Títulos --- */
+.section {
+    margin-bottom: 250px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-top: -180px;
+}
+
+h2 {
+    color: #4CAF50;
+    border-left: 5px solid #4CAF50;
+    padding-left: 15px;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+}
+
+
+.carousel-container {
+    position: relative;
+    max-width: 800px;
+    
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-wrapper {
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    /* Flexbox for centering images */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    /* Consistent height for the slide area */
+    background-color: #f0f0f0;
+    /* Background for empty space */
+}
+
+.carousel-slide img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    /* Allow width to adjust */
+    height: auto;
+    /* Allow height to adjust */
+    object-fit: contain;
+    /* Ensure full image is visible */
+    display: block;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Optional: distinct look for image */
+}
+
+.nav-bar {
+    color: #fa9703;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    justify-content: center;
+    /* Centered nav */
+}
+
+
+
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.carousel-caption h3 {
+    margin: 0 0 5px;
+    font-size: 1.4rem;
+}
+
+.carousel-caption p {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    font-size: 2rem;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    color: #333;
+    transition: background-color 0.3s;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+.carousel-btn.prev {
+    left: 15px;
+}
+
+.carousel-btn.next {
+    right: 15px;
+}
+
+/* --- Media Section Styles --- */
+.media-section {
+    text-align: center;
+}
+
+.media-item {
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin: 5px;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* --- Catalog Grid Layout --- */
+dl dl {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.produktua-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    width: 250px;
+    /* Fixed width for grid items */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.produktua-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.produktua-item img {
+    max-width: 100%;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.produktua-info {
+    width: 100%;
+}
+
+.produktua-info dt {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.produktua-info dd {
+    margin: 0;
+    color: #555;
+    font-size: 1rem;
+}
+
+.nav-media {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    justify-content: center;
+    /* Centered nav */
+}
+.logo {
+    margin-top: -80px;
+    text-align: center;
+}
+

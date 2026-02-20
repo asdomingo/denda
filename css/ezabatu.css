@@ -1,0 +1,155 @@
+/* --- Base y Tipografía --- */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+    padding: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #007bff;
+    border-bottom: 3px solid #007bff;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 2.2em;
+}
+
+h2 {
+    color: #dc3545; /* Rojo para indicar que se trata de la eliminación */
+    font-size: 1.6em;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* --- Navegación / Breadcrumb --- */
+p:first-of-type a {
+    color: #000000;
+    text-decoration: none;
+}
+
+p:first-of-type a:hover {
+    text-decoration: underline;
+}
+
+/* --- Mensaje de Error (si existe) --- */
+.mensaje-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+
+/* --- Mensaje de Advertencia (Caja Roja) --- */
+.abisu-kaxa {
+    background-color: #f8d7da; /* Rojo muy claro */
+    border: 1px solid #dc3545; /* Borde rojo */
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.abisu-kaxa h3 {
+    color: #721c24; /* Rojo oscuro para el texto principal */
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.abisu-kaxa p {
+    margin: 0;
+}
+
+/* --- Contenedor de Detalle (Imagen y Tabla) --- */
+.producto-detalle-ezabatu {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #e9ecef;
+}
+
+.imagen-ezabatu {
+    width: 150px; 
+    height: 150px;
+    object-fit: cover;
+    border: 3px solid #dc3545; /* Borde rojo de advertencia */
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+/* --- Tabla de Detalles del Producto --- */
+table {
+    width: 100%;
+    max-width: 500px;
+    border-collapse: collapse;
+    margin: 0; /* Reiniciamos margen */
+    border: none; /* Quitamos el borde general ya que el div contenedor tiene uno */
+}
+
+/* Celda de encabezado (Izena, Prezioa, Kategoria) - Estilos para th */
+table th {
+    background-color: #e9ecef !important;
+    text-align: right;
+    width: 30%;
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    color: #495057;
+    font-weight: bold;
+}
+
+/* Celda de datos (Valores) - Estilos para td */
+table td {
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    color: #343a40;
+}
+
+table td em {
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+/* --- Botones de Acción (Formulario) --- */
+form p {
+    margin-top: 25px;
+}
+
+/* Botón de Confirmación (Eliminar) */
+input[type="submit"][name="ezabatu"] {
+    background-color: #dc3545; /* Rojo Fuerte */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    margin-right: 15px;
+}
+
+input[type="submit"][name="ezabatu"]:hover {
+    background-color: #c82333;
+}
+
+/* Enlace "EZ, Itzuli" (Cancelar) */
+.itzuli-lotura {
+    background-color: #57ca40; /* Gris */
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+    display: inline-block;
+}
+
+.itzuli-lotura:hover {
+    background-color: #27a03a;
+}

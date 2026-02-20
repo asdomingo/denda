@@ -1,0 +1,23 @@
+# Configuración para AWS/Apache
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+</IfModule>
+
+# Permitir archivos estáticos
+<FilesMatch "\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$">
+    Header set Cache-Control "max-age=31536000, public"
+    Header set Expires "Wed, 20 Jan 2027 20:20:20 GMT"
+</FilesMatch>
+
+# Agregar tipos MIME
+AddType application/javascript js
+AddType text/css css
+AddType application/json json
+
+# Permitir acceso a archivos PHP
+<FilesMatch "\.php$">
+    Allow from all
+</FilesMatch>

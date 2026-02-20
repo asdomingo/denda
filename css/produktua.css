@@ -1,0 +1,161 @@
+/* --- Estilos Globales --- */
+body {
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    background-color: #f4f7f6; /* Un gris sutil para que resalten las tarjetas blancas */
+    margin: 0;
+    color: #333;
+}
+
+/* Contenedor principal sin márgenes negativos */
+.container-katalogoa, .container, main {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* --- Header Compacto (Elimina el espacio excesivo) --- */
+.header {
+    background-color: #fff;
+    padding: 20px 0; /* Padding reducido */
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.logo {
+    max-width: 220px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    margin: 15px 0 0;
+    color: #1c9c02; /* El verde de tu marca */
+    font-weight: 700;
+}
+
+/* --- Navegación --- */
+.nav-katalogoa, .nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px 0;
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.9rem;
+}
+
+.nav-katalogoa a, .nav a {
+    color: #1c9c02;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.nav-katalogoa a:hover {
+    text-decoration: underline;
+}
+
+/* --- SECCIONES Y TÍTULOS (Estilo de la captura) --- */
+.section {
+    background: #fff;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+h2 {
+    color: #1c9c02;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    padding-left: 12px;
+    border-left: 5px solid #1c9c02; /* La barrita verde lateral */
+}
+
+/* --- DETALLE DEL PRODUCTO --- */
+.produktua-detalle {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    padding: 40px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.produktua-detalle img {
+    flex: 0 0 380px;
+    padding: 15px;
+    border: 1px solid #f0f0f0;
+    border-radius: 10px;
+    background: #fff;
+    object-fit: contain;
+}
+
+.produktua-data h2 {
+    border-left: none; /* Quitamos la barra en el nombre del producto */
+    padding-left: 0;
+    font-size: 2rem;
+    color: #222;
+}
+
+.prezioa {
+    font-size: 1.2rem;
+    color: #666;
+    margin: 20px 0;
+}
+
+.prezioa strong {
+    font-size: 1.8rem;
+    color: #1c9c02;
+}
+
+/* Botón Itzuli */
+.atzera-lotura {
+    display: inline-block;
+    background-color: #f5f5f5;
+    color: #555;
+    padding: 10px 25px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.atzera-lotura:hover {
+    background-color: #e8e8e8;
+    color: #000;
+}
+
+/* --- GRID DE PRODUCTOS (Katalogoa) --- */
+.produktua-item {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 15px;
+    width: 220px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.produktua-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* --- Responsivo --- */
+@media (max-width: 850px) {
+    .produktua-detalle {
+        flex-direction: column;
+        padding: 20px;
+        text-align: center;
+    }
+    .produktua-detalle img {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 320px;
+    }
+}
