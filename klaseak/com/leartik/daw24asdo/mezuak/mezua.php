@@ -6,6 +6,8 @@ class Mezua {
     private $izena;
     private $emaila;
     private $mezua;
+    private $estatua; // Berria, Irakurrita, Erantzunda
+    private $data;
 
     public function getId() { return $this->id; }
     public function setId($id) { $this->id = $id; }
@@ -18,5 +20,11 @@ class Mezua {
 
     public function getMezua() { return $this->mezua; }
     public function setMezua($mezua) { $this->mezua = $mezua; }
+
+    public function getEstatua() { return $this->estatua ?? 'Berria'; }
+    public function setEstatua($estatua) { $this->estatua = $estatua; }
+
+    public function getData() { return $this->data; }
+    public function setData($data) { $this->data = $data; }
 }
 ?>

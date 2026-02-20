@@ -100,6 +100,13 @@
             .btn-osatu { background: #28a745; color: white; }
             .btn-ezeztatu { background: #dc3545; color: white; }
 
+            .estatua-berria { background: #e3f2fd; color: #0d47a1; border: 1px solid #bbdefb; }
+            .estatua-irakurrita { background: #f5f5f5; color: #616161; border: 1px solid #e0e0e0; }
+            .estatua-erantzunda { background: #e8f5e9; color: #1b5e20; border: 1px solid #c8e6c9; }
+            
+            .btn-irakurri { background: #6c757d; color: white; }
+            .btn-erantzun { background: #6f42c1; color: white; }
+
             .btn-status:hover {
                 opacity: 0.8;
                 transform: scale(1.03);
@@ -340,23 +347,52 @@
                     <table class="admin-table">
                         <thead>
                             <tr>
+                                <th>Egoera</th>
                                 <th>ID</th>
-                                <th>Izena</th>
-                                <th>Emaila</th>
-                                <th>Mezua</th>
+                                <th>Izena / Emaila</th>
+                                <th>Mezua / Data</th>
                                 <th>Ekintzak</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($mezuak as $mezua): ?>
                                 <tr>
-                                    <td><strong><?php echo $mezua->getId(); ?></strong></td>
-                                    <td><?php echo htmlspecialchars($mezua->getIzena()); ?></td>
-                                    <td><a href="mailto:<?php echo htmlspecialchars($mezua->getEmaila()); ?>"><?php echo htmlspecialchars($mezua->getEmaila()); ?></a></td>
-                                    <td><?php echo nl2br(htmlspecialchars(substr($mezua->getMezua(), 0, 100))); ?>...</td>
+                                    <td id="status-mezua-cell-<?php echo $mezua->getId(); ?>">
+                                        <div style="display: flex; gap: 5px; flex-wrap: wrap; align-items: center;">
+                                            <span class="estatua-badge <?php echo 'estatua-' . strtolower($mezua->getEstatua()); ?>">
+                                                <?php echo htmlspecialchars($mezua->getEstatua()); ?>
+                                            </span>
+                                            
+                                            <form method="POST" style="display: inline-flex; gap: 4px;" onsubmit="return updateMezuaEstatuaAJAX(this, <?php echo $mezua->getId(); ?>)">
+                                                <input type="hidden" name="id_mezua" value="<?php echo $mezua->getId(); ?>">
+                                                <input type="hidden" name="estatua" id="estatua_mezua_input_<?php echo $mezua->getId(); ?>">
+                                                
+                                                <?php if ($mezua->getEstatua() === 'Berria'): ?>
+                                                    <button type="submit" name="cambiar_estado_mezua" value="Irakurrita" class="btn-status btn-irakurri" onclick="document.getElementById('estatua_mezua_input_<?php echo $mezua->getId(); ?>').value='Irakurrita'">Irakurri</button>
+                                                <?php endif; ?>
+                                                
+                                                <?php if ($mezua->getEstatua() !== 'Erantzunda'): ?>
+                                                    <button type="submit" name="cambiar_estado_mezua" value="Erantzunda" class="btn-status btn-erantzun" onclick="document.getElementById('estatua_mezua_input_<?php echo $mezua->getId(); ?>').value='Erantzunda'">Erantzun</button>
+                                                <?php endif; ?>
+                                            </form>
+                                        </div>
+                                    </td>
+                                    <td><strong>#<?php echo $mezua->getId(); ?></strong></td>
                                     <td>
-                                        <a href="kontaktua/editatu.php?id=<?php echo $mezua->getId(); ?>" class="btn-small btn-edit-small">Aldatu</a>
-                                        <a href="kontaktua/ezabatu.php?id=<?php echo $mezua->getId(); ?>" class="btn-small btn-delete-small" onclick="return confirm('Ziur zaude?')">Ezabatu</a>
+                                        <div style="font-weight: bold;"><?php echo htmlspecialchars($mezua->getIzena()); ?></div>
+                                        <div style="font-size: 0.85rem;"><a href="mailto:<?php echo htmlspecialchars($mezua->getEmaila()); ?>"><?php echo htmlspecialchars($mezua->getEmaila()); ?></a></div>
+                                    </td>
+                                    <td>
+                                        <div style="font-size: 0.9rem; margin-bottom: 5px;"><?php echo nl2br(htmlspecialchars(substr($mezua->getMezua(), 0, 150))); ?>...</div>
+                                        <div style="font-size: 0.8rem; color: #777;">
+                                            <?php echo $mezua->getData() ? date('d/m/Y H:i', strtotime($mezua->getData())) : '---'; ?>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <form method="POST" style="display: inline;">
+                                            <input type="hidden" name="id_mezua" value="<?php echo $mezua->getId(); ?>">
+                                            <button type="submit" name="eliminar_mezua" class="btn-small btn-delete-small" onclick="return confirm('Ziur zaude mezua ezabatu nahi duzula?')">Ezabatu</button>
+                                        </form>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -423,6 +459,64 @@
 
                 if (estatua !== 'Jasota' && estatua !== 'Ezeztatua') {
                     html += `<button type="submit" name="cambiar_estado_eskaria" value="Ezeztatua" class="btn-status btn-ezeztatu" onclick="if(confirm('Ziur zaude eskaria ezeztatu nahi duzula?')) { document.getElementById('estatua_input_${id}').value='Ezeztatua'; return true; } return false;">Ezeztatu</button>`;
+                }
+
+                html += `
+                        </form>
+                    </div>
+                `;
+                
+                cell.innerHTML = html;
+            }
+
+            function updateMezuaEstatuaAJAX(form, id) {
+                const formData = new FormData(form);
+                const estatua = formData.get('estatua');
+                const cell = document.getElementById('status-mezua-cell-' + id);
+                
+                cell.style.opacity = '0.5';
+                
+                fetch('api/mezua_status_api.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        updateMezuaUIAfterStatusChange(id, data.estatua);
+                    } else {
+                        alert('Errorea: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Errorea eskaera bidaltzean');
+                })
+                .finally(() => {
+                    cell.style.opacity = '1';
+                });
+                
+                return false;
+            }
+
+            function updateMezuaUIAfterStatusChange(id, estatua) {
+                const cell = document.getElementById('status-mezua-cell-' + id);
+                let badgeClass = 'estatua-' + estatua.toLowerCase();
+                
+                let html = `
+                    <div style="display: flex; gap: 5px; flex-wrap: wrap; align-items: center;">
+                        <span class="estatua-badge ${badgeClass}">${estatua}</span>
+                        <form method="POST" style="display: inline-flex; gap: 4px;" onsubmit="return updateMezuaEstatuaAJAX(this, ${id})">
+                            <input type="hidden" name="id_mezua" value="${id}">
+                            <input type="hidden" name="estatua" id="estatua_mezua_input_${id}">
+                `;
+
+                if (estatua === 'Berria') {
+                    html += `<button type="submit" name="cambiar_estado_mezua" value="Irakurrita" class="btn-status btn-irakurri" onclick="document.getElementById('estatua_mezua_input_${id}').value='Irakurrita'">Irakurri</button>`;
+                }
+                
+                if (estatua !== 'Erantzunda') {
+                    html += `<button type="submit" name="cambiar_estado_mezua" value="Erantzunda" class="btn-status btn-erantzun" onclick="document.getElementById('estatua_mezua_input_${id}').value='Erantzunda'">Erantzun</button>`;
                 }
 
                 html += `

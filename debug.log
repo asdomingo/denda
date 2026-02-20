@@ -8,3 +8,63 @@
 [2026-02-19 23:53:16] Delete result: Success
 [2026-02-19 23:53:19] Trying to delete eskaria ID: 13
 [2026-02-19 23:53:19] Delete result: Success
+[2026-02-19 23:59:31] Trying to delete eskaria ID: 13
+[2026-02-19 23:59:31] Delete result: Success
+[2026-02-19 23:59:58] Trying to delete eskaria ID: 13
+[2026-02-19 23:59:58] Delete result: Success
+[2026-02-20 00:00:55] Trying to delete eskaria ID: 13
+[2026-02-20 00:00:55] Delete result: Success
+[2026-02-20 00:02:12] Trying to delete eskaria ID: 13
+[2026-02-20 00:02:12] Delete result: Success
+[2026-02-20 00:03:30] Trying to delete eskaria ID: 13
+[2026-02-20 00:03:30] Delete result: Success
+[2026-02-20 00:03:33] Trying to update message status for ID: 10 to Irakurrita
+[2026-02-20 00:03:33] Update result: Success
+[2026-02-20 00:03:36] Trying to update message status for ID: 10 to Erantzunda
+[2026-02-20 00:03:36] Update result: Success
+[2026-02-20 00:03:44] Trying to update message status for ID: 9 to Erantzunda
+[2026-02-20 00:03:44] Update result: Success
+[2026-02-20 00:03:45] Trying to update message status for ID: 8 to Irakurrita
+[2026-02-20 00:03:45] Update result: Success
+[2026-02-20 00:03:46] Trying to update message status for ID: 8 to Erantzunda
+[2026-02-20 00:03:46] Update result: Success
+[2026-02-20 00:03:47] Trying to update message status for ID: 7 to Irakurrita
+[2026-02-20 00:03:47] Update result: Success
+[2026-02-20 00:03:48] Trying to update message status for ID: 7 to Erantzunda
+[2026-02-20 00:03:48] Update result: Success
+[2026-02-20 00:03:54] Trying to delete message ID: 10
+[2026-02-20 00:03:54] Delete result: Success
+[2026-02-20 00:03:57] Trying to delete message ID: 9
+[2026-02-20 00:03:57] Delete result: Success
+[2026-02-20 00:04:01] Trying to delete message ID: 8
+[2026-02-20 00:04:01] Delete result: Success
+[2026-02-20 00:04:37] Trying to delete message ID: 7
+[2026-02-20 00:04:37] Delete result: Success
+[2026-02-20 00:06:11] Log: Nuevo pedido creado por: asier Domingo - Email: asierdomingo7@gmail.com
+[2026-02-20 00:06:26] Trying to update status for ID: 15 to Prozesatzen
+[2026-02-20 00:06:26] Update result: Success
+[2026-02-20 00:06:28] Trying to update status for ID: 15 to Bidalita
+[2026-02-20 00:06:28] Update result: Success
+[2026-02-20 00:06:30] Trying to update status for ID: 15 to Jasota
+[2026-02-20 00:06:30] Update result: Success
+[2026-02-20 00:06:36] Trying to delete eskaria ID: 15
+[2026-02-20 00:06:36] Delete result: Success
+[2026-02-20 00:08:39] Log: Nuevo pedido creado por: asier Domingo - Email: asierdomingo7@gmail.com
+[2026-02-20 00:08:53] Trying to update status for ID: 16 to Prozesatzen
+[2026-02-20 00:08:53] Update result: Success
+[2026-02-20 00:08:55] Trying to update status for ID: 16 to Bidalita
+[2026-02-20 00:08:55] Update result: Success
+[2026-02-20 00:08:57] Trying to update status for ID: 16 to Jasota
+[2026-02-20 00:08:57] Update result: Success
+[2026-02-20 00:09:03] Trying to delete eskaria ID: 16
+[2026-02-20 00:09:03] Delete result: Success
+[2026-02-20 00:14:15] Trying to update message status for ID: 11 to Irakurrita
+[2026-02-20 00:14:15] Update result: Success
+[2026-02-20 00:14:16] Trying to update message status for ID: 11 to Erantzunda
+[2026-02-20 00:14:16] Update result: Success
+[2026-02-20 00:14:25] Trying to delete message ID: 11
+[2026-02-20 00:14:25] Delete result: Success
+[2026-02-20 01:18:25] Trying to update message status for ID: 12 to Erantzunda
+[2026-02-20 01:18:25] Update result: Success
+[2026-02-20 01:18:28] Trying to delete message ID: 12
+[2026-02-20 01:18:28] Delete result: Success

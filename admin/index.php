@@ -37,10 +37,14 @@ if ($admin === true) {
         } elseif (isset($_POST['eliminar_eskaria'])) {
             $id_eskaria = (int)$_POST['id_eskaria'];
             EskariaDB::deleteEskaria($id_eskaria);
+        } elseif (isset($_POST['eliminar_mezua'])) {
+            $id_mezua = (int)$_POST['id_mezua'];
+            MezuaDB::deleteMezua($id_mezua);
         }
     }
 
     $eskariak = EskariaDB::selectEskariak();
+    $mezuak = MezuaDB::selectMezuak();
     if ($produktuak === null) {
         echo "<p>Errorea: ezin izan da datu-basea ireki edo produkturik ez dago.</p>";
         exit;
